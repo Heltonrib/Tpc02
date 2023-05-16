@@ -1,0 +1,100 @@
+import java.util.LinkedList;
+
+public class Disciplina{
+     private String titulo;
+    private String nomeDoDocente;
+    private LinkedList<Aluno> alunos;
+    //construtor
+    public Disciplina(String titulo, String nomeDoDocente) {
+        this.titulo = titulo;
+        this.nomeDoDocente = nomeDoDocente;
+        this.alunos = new LinkedList<Aluno>();
+    }
+
+    public Disciplina() {
+    }
+
+    /**
+     * @return String return the titulo
+     */
+    public String getTitulo() {
+        return titulo;
+    }
+
+    /**
+     * @param titulo the titulo to set
+     */
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    /**
+     * @return String return the nomeDoDocente
+     */
+    public String getNomeDoDocente() {
+        return nomeDoDocente;
+    }
+
+    /**
+     * @param nomeDoDocente the nomeDoDocente to set
+     */
+    public void setNomeDoDocente(String nomeDoDocente) {
+        this.nomeDoDocente = nomeDoDocente;
+    }
+
+    /**
+     * @return LinkedList<Aluno> return the alunos
+     */
+    public LinkedList<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    /**
+     * @param alunos the alunos to set
+     */
+    public void setAlunos(LinkedList<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+    public void adicionarAluno(Aluno aluno) {
+        alunos.add(aluno);
+    }
+    
+    public void removerAluno(Aluno aluno) {
+        alunos.remove(aluno);
+    }
+    public Aluno melhorAluno() {
+        Aluno melhorAluno = null;
+        double melhorMedia = 0.0;
+        for (Aluno aluno : alunos) {
+            double media = aluno.calcularMedia();
+            if (media > melhorMedia) {
+                melhorMedia = media;
+                melhorAluno = aluno;
+            }
+        }
+        return melhorAluno;
+    }
+    public static void main(String[] args) {
+        Disciplina disciplina = new Disciplina();
+        Aluno aluno1 = new Aluno("Ana", new int[] {15,	18,	16,	12,	14,	19});
+        disciplina.adicionarAluno(aluno1);
+        
+        Aluno aluno2 = new Aluno("Paula", new int[] {12, 14, 17, 18, 20, 15});
+        disciplina.adicionarAluno(aluno2);
+        
+        Aluno aluno3 = new Aluno("pedro", new int[] {10,	14,	17,	14,	18,	19});
+        disciplina.adicionarAluno(aluno3);
+        Aluno melhorAluno = disciplina.melhorAluno();
+        System.out.println("Melhor aluno: " + melhorAluno.getNome());
+        System.out.println("Média: " + melhorAluno.calcularMedia());
+    }
+}
+
+
+
+
+
+
+
+
+
