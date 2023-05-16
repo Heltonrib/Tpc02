@@ -1,1 +1,51 @@
-sdfygydscbihczxilsdaygfbasdds
+
+
+public class Aluno {
+   String nome;
+    int[] nota;
+    //construtor
+
+    public Aluno(String nome, int[] nota) {
+        this.nome = nome;
+        this.nota = nota;
+    }
+    //geterres and setterres
+
+    Aluno(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    Aluno(String nome, int nota) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int[] getNota() {
+        return nota;
+    }
+
+    public void setNota(int[] nota) {
+        this.nota = nota;
+    }
+
+    @Override
+    public String toString() {
+        return "Aluno{" + "nome=" + nome + ", nota=" + nota + '}';
+    }
+
+    public double calcularMedia() {
+        return 0;
+    }
+    
+   
+}
+
+    
+ 
