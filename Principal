@@ -1,0 +1,54 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import javax.swing.JFileChooser;
+
+public class Principal {
+    
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        Lista lista = new Lista();
+        // Cria um objeto JFileChooser
+        JFileChooser escolha = new JFileChooser();
+
+        // System.out.println(fich.getAbsolutePath());
+        // Se o usuário selecionou um arquivo
+        int res = escolha.showOpenDialog(null);
+        if (res == JFileChooser.APPROVE_OPTION) {
+
+            // Obtém o arquivo selecionado
+            File fich = escolha.getSelectedFile();
+            // System.out.println(fich.getAbsolutePath());
+            Scanner ler = null;
+            try {
+                ler = new Scanner(fich);
+                ler.nextLine();// ler em branco
+                while (ler.hasNext()) {
+                    String linha = ler.nextLine();
+                    // System.out.println(linha);
+                    // separar linha por;
+                    String[] Separador = linha.split(";");
+                    String nome = Separador[0];
+                    int nota = Integer.parseInt(Separador[1]);
+                    Aluno aluno = new Aluno(nome, nota);
+                    System.out.println(aluno);
+                    // colocar aluno na lista
+                    lista.inserir(aluno);
+                }
+                
+              
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } finally {
+                ler.close();
+            }
+            lista.listar();
+            
+        }
+    }
+}
